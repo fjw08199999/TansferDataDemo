@@ -45,18 +45,14 @@ class DispleyViewController: UIViewController {
     func aNumberCheck() {
         
         for i in 0...3 {
-            
             if inputNumber[i] == answerNumber[i] {
                 aNumber += 1
-            } else if aNumber == 4 {
-                print(GameStatus.gameWin.rawValue)
             }
         }
     }
     
     //檢查B得分
     func bNumberCheck() {
-        
         for i in 0...3 {
             if answerNumber.contains(inputNumber[i]) && inputNumber[i] != answerNumber[i] {
                 bNumber += 1
@@ -84,19 +80,17 @@ class DispleyViewController: UIViewController {
     //遊戲狀態確認
     func gameStatusCheck() {
         if aNumber == 4 {
-            showNowLabel.text = GameStatus.gameWin.rawValue
+            
         }
     }
     
-    //清除上一次紀錄的A與B數量
-    func clearABNumber() {
-        aNumber = 0
-        bNumber = 0
-    }
     
     //Arlt視窗
-    func arltMsg() {
-        
+    func alertMsg(title: String, message: String) {
+        let alertUIViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "遊戲訊息", style: .default)
+        alertUIViewController.addAction(alertAction)
+        present(alertUIViewController, animated: true)
     }
     
     

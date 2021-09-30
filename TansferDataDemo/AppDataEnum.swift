@@ -5,25 +5,22 @@
 //  Created by fred fu on 2021/9/25.
 //
 
-import Foundation
-
-enum GameStatus: String {
-    case gameStart = "遊戲開始"
-    case gameOver = "遊戲結束"
-    case gameTie = "遊戲平手"
-    case gameWin = "恭喜！猜對瞜！"
+enum GameState {
+    case start
+    case win
+    case lose
+    case draw
     
-    func status() -> () {
-        
+    var status: String {
         switch self {
-        case .gameStart:
-            return
-        case .gameOver:
-            return
-        case .gameTie:
-            return
-        case .gameWin:
-            return
+        case .start:
+            return "遊戲開始，猜猜看吧?"
+        case .win:
+            return "你贏了！"
+        case .lose:
+            return "你輸了！"
+        case .draw:
+            return "平手，再來一次！"
         }
     }
 }
