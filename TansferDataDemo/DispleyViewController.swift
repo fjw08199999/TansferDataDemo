@@ -9,78 +9,66 @@ import UIKit
 
 class DispleyViewController: UIViewController {
     
-    var arrayNumber: [Int] = []
-    var answerNumber: [Int] = []
-    var inputNumber: [Int] = [0, 0, 0, 0]
-    var gameTimes: Int = 0
-    var aNumber: Int = 0
-    var bNumber: Int = 0
     
-    
-    //產生答案隨機不重複四個數字
-    func getAnswerNumber() {
-        
-        for i in Range(0...9) {
-            arrayNumber.append(i)
-        }
-        arrayNumber.shuffle()
-        
-        for i in Range(0...3) {
-            answerNumber.append(arrayNumber[i])
-        }
-    }
-    
-    //抓取InputField文字，並轉換為Int，存於answerNumber內
+    //抓取InputField文字，並轉換為Int，存於inputNumber內
     func getInputText() {
         
         if let inputFieldText = inputField.text {
-            if answerNumber.contains(0) {
-                inputNumber = inputFieldText.map({Int("\($0)")! })
-                print(inputNumber)
-            }
+            inputNumber = inputFieldText.map({Int("\($0)")! })
+        } else {
+            return
         }
     }
     
-    //檢查A得分
-    func aNumberCheck() {
-        
-        for i in 0...3 {
-            if inputNumber[i] == answerNumber[i] {
-                aNumber += 1
-            }
+    
+    //更新TextView 紀錄猜過的歷史紀錄
+    func updateTextViewData(inputFieldText: String) {
+        if inputNumber.count == 4 {
+            displayListText.text += "\(inputFieldText)\t\(aNumber)A\(bNumber)B\n"
         }
     }
     
-    //檢查B得分
-    func bNumberCheck() {
-        for i in 0...3 {
-            if answerNumber.contains(inputNumber[i]) && inputNumber[i] != answerNumber[i] {
-                bNumber += 1
-            }
+    //檢查InputField不能為Nil
+    func nilCheck() {
+        if inputField.text?.isEmpty == true {
+            alertMsg(title: "Error", message: "輸入不能為空白")
         }
     }
     
-    //更新TextView
-    func updateTextViewData() {
-        displayListText.text += "\(inputField.text!)\t\(aNumber)A\(bNumber)B\n"
-    }
-    
-    //檢查輸入不得超過四個字
-    func checkInputNumberCount() {
-        if inputNumber.count > 4 {
-            
+    //檢查輸入不得超過四個字以及只能是數字
+    func checkInputNumberCount(inputFieldText: String) {
+        if inputFieldText.count != 4 {
+            alertMsg(title: "Error", message: "只能輸入四個字")
         }
     }
     
     //檢查輸入一定要是數字
-    func checkInputNumberIsNumber() {
-        
+    func checkInputNumberIsNumber(inputFieldText: String) {
+        let inputPre = NSPredicate(format: "SELF MATCHES %@", "^[0-9]{4}$") // 必須為 4 個 0~9 數字
+        let bool = inputPre.evaluate(with: inputFieldText) // 符合的話為 true
+        if bool == false {
+            alertMsg(title: "Error", message: "要輸入0~9數字")
+        }
     }
+    
+    //檢查是否輸入重複數字
+        func repeatNumber(inputNumber: [Int]) {
+            if inputNumber.count == 4 {
+                for (indexA, dataA) in inputNumber.enumerated() {
+                    for (indexB, dataB) in inputNumber.enumerated() {
+                        if indexA == indexB { continue }
+                        if dataA == dataB {
+                            alertMsg(title: "Error", message: "不能輸入重複的數字")
+                            return }
+                    }
+                }
+            }
+        }
     
     //遊戲狀態確認
     func gameStatusCheck() {
         if aNumber == 4 {
-            
+            alertMsg(title: "SystemMsg", message: "恭喜答對了")
         }
     }
     
@@ -88,9 +76,14 @@ class DispleyViewController: UIViewController {
     //Arlt視窗
     func alertMsg(title: String, message: String) {
         let alertUIViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "遊戲訊息", style: .default)
+        let alertAction = UIAlertAction(title: "OK", style: .default)
         alertUIViewController.addAction(alertAction)
         present(alertUIViewController, animated: true)
+    }
+    
+    //點擊空白處收鍵盤
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     
@@ -124,15 +117,40 @@ class DispleyViewController: UIViewController {
     
     @IBAction func sendAnwserButton(_ sender: Any) {
         
-        aNumber = 0
-        bNumber = 0
+        //檢查inputField格式
+        //檢查i是否為空值
+        nilCheck()
+        
+        //檢查是否輸入四個字
+        checkInputNumberCount(inputFieldText: inputField.text!)
+        
+        //檢查是否輸入為數字
+        checkInputNumberIsNumber(inputFieldText: inputField.text!)
+        
+        //抓取FieldText值
         getInputText()
+        
+        //檢查是否輸入重複數字
+        repeatNumber(inputNumber: inputNumber)
+        
+        //比對答案 幾A幾B
         aNumberCheck()
         bNumberCheck()
-        updateTextViewData()
+        
+        //更新TextView
+        updateTextViewData(inputFieldText: inputField.text!)
+        
+        //判斷是否全部猜對
         gameStatusCheck()
         
+        //重置A B 計數
+        aNumber = 0
+        bNumber = 0
+        
+        
+        
         print(answerNumber)
+        print(inputNumber)
     }
     
 }

@@ -1,27 +1,15 @@
-import UIKit
-
-var arrayNumber: [Int] = []
-var answerNumber: [Int] = []
-var inputAnswer: [String] = ["2", "6", "7", "4"]
-
-let testNumber: String = "1234"
+var inputTextData: Array<Int> = [1,2,3,3]
 
 
-func getAnswerNumber() {
-    
-    for i in Range(0...9) {
-        arrayNumber.append(i)
+func inputCheck(inputText: [Int]) -> Bool {
+    for (indexA, dataA) in inputText.enumerated() {
+        for (indexB, dataB) in inputText.enumerated() {
+            if indexA == indexB { continue }
+            if dataA == dataB { return true }
+        }
     }
-    
-    arrayNumber.shuffle()
-    
-    for j in Range(0...3) {
-        answerNumber.append(arrayNumber[j])
-    }
+    return false
 }
 
-getAnswerNumber()
 
-let testArray = testNumber.map({Int("\($0)")! })
-
-print(testArray)
+inputCheck(inputText: inputTextData)
