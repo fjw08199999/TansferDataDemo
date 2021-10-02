@@ -12,11 +12,13 @@ func getAnswerNumber() {
     for i in Range(0...9) {
         arrayNumber.append(i)
     }
-    arrayNumber.shuffle()
     
-    for i in Range(0...3) {
-        answerNumber.append(arrayNumber[i])
+    arrayNumber = arrayNumber.shuffled()
+    
+    for j in Range(0...3) {
+        answerNumber.append(arrayNumber[j])
     }
+    arrayNumber = []
 }
 
 //檢查A得分

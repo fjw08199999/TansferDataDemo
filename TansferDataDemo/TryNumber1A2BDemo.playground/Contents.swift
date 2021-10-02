@@ -1,9 +1,20 @@
-let inputField: String = "5633"
+var arrayNumber: Array<Int> = []
+var answerNumber: Array<Int> = []
 
-
-
-let testArray = inputField.map({Int ("\($0)")! })
-
-for (indexA, dataA) in testArray.enumerated() {
-    print("indexA:\(indexA)\n dataA:\(dataA)")
+func getAnswerNumber() {
+    
+    for i in Range(0...9) {
+        arrayNumber.append(i)
+    }
+    
+    arrayNumber = arrayNumber.shuffled()
+    
+    for j in Range(0...3) {
+        answerNumber.append(arrayNumber[j])
+    }
+    
+    print(answerNumber)
 }
+
+
+getAnswerNumber()

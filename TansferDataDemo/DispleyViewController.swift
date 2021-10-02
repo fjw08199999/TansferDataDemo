@@ -153,4 +153,23 @@ class DispleyViewController: UIViewController {
         print(inputNumber)
     }
     
+    @IBAction func replayButtonAction(_ sender: Any) {
+        
+        //清除TextView文字
+        displayListText.text = ""
+        
+        
+        //ab計數歸零
+        aNumber = 0
+        bNumber = 0
+        
+        //重新產生答案
+        answerNumber = []
+        getAnswerNumber()
+        
+        print(arrayNumber)
+        print(answerNumber)
+        print(inputNumber)
+        
+    }
 }
