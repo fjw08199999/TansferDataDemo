@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE413D20270807F000D83082 /* ShowGameStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE413D1F270807F000D83082 /* ShowGameStatusViewController.swift */; };
 		CE7DE93F26FF4B3F00E39766 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE93E26FF4B3F00E39766 /* AppDelegate.swift */; };
 		CE7DE94126FF4B3F00E39766 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE94026FF4B3F00E39766 /* SceneDelegate.swift */; };
 		CE7DE94626FF4B3F00E39766 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7DE94426FF4B3F00E39766 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE413D1F270807F000D83082 /* ShowGameStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGameStatusViewController.swift; sourceTree = "<group>"; };
 		CE7DE93B26FF4B3F00E39766 /* TansferDataDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TansferDataDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7DE93E26FF4B3F00E39766 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7DE94026FF4B3F00E39766 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				CE7DE93E26FF4B3F00E39766 /* AppDelegate.swift */,
 				CE7DE94026FF4B3F00E39766 /* SceneDelegate.swift */,
 				CE7DE95226FF4B7400E39766 /* DispleyViewController.swift */,
+				CE413D1F270807F000D83082 /* ShowGameStatusViewController.swift */,
 				CEE8C3732701A972002CA773 /* AppFunction.swift */,
 				CE7DE95426FF4B8A00E39766 /* AppDataEnum.swift */,
 				CE7DE94426FF4B3F00E39766 /* Main.storyboard */,
@@ -151,6 +154,7 @@
 				CE7DE93F26FF4B3F00E39766 /* AppDelegate.swift in Sources */,
 				CE7DE94126FF4B3F00E39766 /* SceneDelegate.swift in Sources */,
 				CE7DE95326FF4B7400E39766 /* DispleyViewController.swift in Sources */,
+				CE413D20270807F000D83082 /* ShowGameStatusViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

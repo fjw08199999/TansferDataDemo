@@ -1,15 +1,9 @@
-var inputTextData: Array<Int> = [1,2,3,3]
+let inputField: String = "5633"
 
 
-func inputCheck(inputText: [Int]) -> Bool {
-    for (indexA, dataA) in inputText.enumerated() {
-        for (indexB, dataB) in inputText.enumerated() {
-            if indexA == indexB { continue }
-            if dataA == dataB { return true }
-        }
-    }
-    return false
+
+let testArray = inputField.map({Int ("\($0)")! })
+
+for (indexA, dataA) in testArray.enumerated() {
+    print("indexA:\(indexA)\n dataA:\(dataA)")
 }
-
-
-inputCheck(inputText: inputTextData)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FKg-Zn-dcT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="123" y="370" width="168" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7I-RZ-cpu">
                                 <rect key="frame" x="170" y="315" width="105" height="21"/>
@@ -46,12 +46,14 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
                                     <action selector="sendAnwserButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kqP-pQ-AqE"/>
+                                    <segue destination="u6r-8l-pyC" kind="show" id="3US-je-mU7"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ChI-2T-EVF"/>
                     <connections>
                         <outlet property="displayListText" destination="rhn-67-ixF" id="izf-nl-wpw"/>
                         <outlet property="inputField" destination="JG4-vf-5be" id="QNy-4e-bAK"/>
@@ -61,12 +63,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34.782608695652179" y="78.348214285714278"/>
+            <point key="canvasLocation" x="944.92753623188412" y="78.348214285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--Show Game Status View Controller-->
         <scene sceneID="gfB-2W-yGF">
             <objects>
-                <viewController id="u6r-8l-pyC" sceneMemberID="viewController">
+                <viewController id="u6r-8l-pyC" customClass="ShowGameStatusViewController" customModule="TansferDataDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8En-Cf-oKK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,10 +91,29 @@
                         <viewLayoutGuide key="safeArea" id="Ycc-zI-78Q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="42o-9J-4VT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DtT-xi-mLl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="955" y="78"/>
+            <point key="canvasLocation" x="1863.7681159420292" y="77.678571428571431"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MKT-u1-5nA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FKg-Zn-dcT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1W4-gl-jok">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="y5b-yX-XVF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jvV-Tv-BEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34.782608695652179" y="78.348214285714278"/>
         </scene>
     </scenes>
     <resources>

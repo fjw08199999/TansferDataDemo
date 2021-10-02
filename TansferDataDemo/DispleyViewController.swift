@@ -127,25 +127,25 @@ class DispleyViewController: UIViewController {
         //檢查是否輸入為數字
         checkInputNumberIsNumber(inputFieldText: inputField.text!)
         
-        //抓取FieldText值
-        getInputText()
-        
-        //檢查是否輸入重複數字
-        repeatNumber(inputNumber: inputNumber)
-        
-        //比對答案 幾A幾B
-        aNumberCheck()
-        bNumberCheck()
-        
-        //更新TextView
-        updateTextViewData(inputFieldText: inputField.text!)
-        
-        //判斷是否全部猜對
-        gameStatusCheck()
-        
-        //重置A B 計數
-        aNumber = 0
-        bNumber = 0
+//        //抓取FieldText值
+//        getInputText()
+//
+//        //檢查是否輸入重複數字
+//        repeatNumber(inputNumber: inputNumber)
+//
+//        //比對答案 幾A幾B
+//        aNumberCheck()
+//        bNumberCheck()
+//
+//        //更新TextView
+//        updateTextViewData(inputFieldText: inputField.text!)
+//
+//        //判斷是否全部猜對
+//        gameStatusCheck()
+//
+//        //重置A B 計數
+//        aNumber = 0
+//        bNumber = 0
         
         
         
