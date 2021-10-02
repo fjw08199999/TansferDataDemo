@@ -35,19 +35,20 @@ enum GameState {
 }
 
 enum SystemMsg {
-    case ErrorText
-    case SystemMsgText
+    case errorText
+    case systemMsgText
     case checkNilText
     case checkNumberCountText
     case checkIsNumberText
     case checkrepeatNumberText
+    case okText
     
     var msg: String {
         switch self {
-        case .ErrorText:
+        case .errorText:
             return "Error"
-        case .SystemMsgText:
-            return "SystemMSG"
+        case .systemMsgText:
+            return "SystemMsg"
         case .checkNilText:
             return "輸入視窗不能為空白"
         case .checkNumberCountText:
@@ -56,6 +57,8 @@ enum SystemMsg {
             return "請輸入數字"
         case .checkrepeatNumberText:
             return "不能輸入重複的數字"
+        case .okText:
+            return "OK"
         }
     }
 }

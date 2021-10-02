@@ -31,14 +31,14 @@ class DispleyViewController: UIViewController {
     //檢查InputField不能為Nil
     func nilCheck() {
         if inputField.text?.isEmpty == true {
-            alertMsg(title: "Error", message: "輸入不能為空白")
+            alertMsg(title: SystemMsg.errorText.msg, message: SystemMsg.checkNilText.msg)
         }
     }
     
     //檢查輸入不得超過四個字以及只能是數字
     func checkInputNumberCount(inputFieldText: String) {
         if inputFieldText.count != 4 {
-            alertMsg(title: "Error", message: "只能輸入四個字")
+            alertMsg(title: SystemMsg.errorText.msg, message: SystemMsg.checkNumberCountText.msg)
         }
     }
     
@@ -47,7 +47,7 @@ class DispleyViewController: UIViewController {
         let inputPre = NSPredicate(format: "SELF MATCHES %@", "^[0-9]{4}$") // 必須為 4 個 0~9 數字
         let bool = inputPre.evaluate(with: inputFieldText) // 符合的話為 true
         if bool == false {
-            alertMsg(title: "Error", message: "要輸入0~9數字")
+            alertMsg(title: SystemMsg.errorText.msg, message: SystemMsg.checkIsNumberText.msg)
         }
     }
     
@@ -58,7 +58,7 @@ class DispleyViewController: UIViewController {
                     for (indexB, dataB) in inputNumber.enumerated() {
                         if indexA == indexB { continue }
                         if dataA == dataB {
-                            alertMsg(title: "Error", message: "不能輸入重複的數字")
+                            alertMsg(title: SystemMsg.errorText.msg, message: SystemMsg.checkrepeatNumberText.msg)
                             return }
                     }
                 }
@@ -68,7 +68,7 @@ class DispleyViewController: UIViewController {
     //遊戲狀態確認
     func gameStatusCheck() {
         if aNumber == 4 {
-            alertMsg(title: "SystemMsg", message: "恭喜答對了")
+            alertMsg(title: SystemMsg.systemMsgText.msg, message: GameState.win.status)
         }
     }
     
@@ -76,7 +76,7 @@ class DispleyViewController: UIViewController {
     //Arlt視窗
     func alertMsg(title: String, message: String) {
         let alertUIViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default)
+        let alertAction = UIAlertAction(title: SystemMsg.okText.msg, style: .default)
         alertUIViewController.addAction(alertAction)
         present(alertUIViewController, animated: true)
     }
@@ -127,25 +127,25 @@ class DispleyViewController: UIViewController {
         //檢查是否輸入為數字
         checkInputNumberIsNumber(inputFieldText: inputField.text!)
         
-//        //抓取FieldText值
-//        getInputText()
-//
-//        //檢查是否輸入重複數字
-//        repeatNumber(inputNumber: inputNumber)
-//
-//        //比對答案 幾A幾B
-//        aNumberCheck()
-//        bNumberCheck()
-//
-//        //更新TextView
-//        updateTextViewData(inputFieldText: inputField.text!)
-//
-//        //判斷是否全部猜對
-//        gameStatusCheck()
-//
-//        //重置A B 計數
-//        aNumber = 0
-//        bNumber = 0
+        //抓取FieldText值
+        getInputText()
+
+        //檢查是否輸入重複數字
+        repeatNumber(inputNumber: inputNumber)
+
+        //比對答案 幾A幾B
+        aNumberCheck()
+        bNumberCheck()
+
+        //更新TextView
+        updateTextViewData(inputFieldText: inputField.text!)
+
+        //判斷是否全部猜對
+        gameStatusCheck()
+
+        //重置A B 計數
+        aNumber = 0
+        bNumber = 0
         
         
         
