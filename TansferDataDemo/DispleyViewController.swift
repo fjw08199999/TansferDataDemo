@@ -14,7 +14,7 @@ class DispleyViewController: UIViewController {
     func getInputText() {
         
         if let inputFieldText = inputField.text {
-            inputNumber = inputFieldText.map({Int("\($0)")! })
+            inputNumber = inputFieldText.map({Int ("\($0)")! })
         } else {
             return
         }
@@ -35,7 +35,7 @@ class DispleyViewController: UIViewController {
         }
     }
     
-    //檢查輸入不得超過四個字以及只能是數字
+    //檢查輸入不得超過四個字
     func checkInputNumberCount(inputFieldText: String) {
         if inputFieldText.count != 4 {
             alertMsg(title: SystemMsg.errorText.msg, message: SystemMsg.checkNumberCountText.msg)
@@ -52,18 +52,17 @@ class DispleyViewController: UIViewController {
     }
     
     //檢查是否輸入重複數字
-        func repeatNumber(inputNumber: [Int]) {
-            if inputNumber.count == 4 {
-                for (indexA, dataA) in inputNumber.enumerated() {
-                    for (indexB, dataB) in inputNumber.enumerated() {
-                        if indexA == indexB { continue }
-                        if dataA == dataB {
-                            alertMsg(title: SystemMsg.errorText.msg, message: SystemMsg.checkrepeatNumberText.msg)
-                            return }
-                    }
+    func repeatNumber(inputNumber: [Int]) {
+        
+        for (indexA, dataA) in inputNumber.enumerated() {
+            for (indexB, dataB) in inputNumber.enumerated() {
+                if indexA == indexB { continue }
+                if dataA == dataB {
+                    alertMsg(title: SystemMsg.errorText.msg, message: SystemMsg.checkrepeatNumberText.msg)
                 }
             }
         }
+    }
     
     //遊戲狀態確認
     func gameStatusCheck() {
@@ -129,23 +128,25 @@ class DispleyViewController: UIViewController {
         
         //抓取FieldText值
         getInputText()
-
+        
         //檢查是否輸入重複數字
         repeatNumber(inputNumber: inputNumber)
-
+        
         //比對答案 幾A幾B
         aNumberCheck()
         bNumberCheck()
-
+        
         //更新TextView
         updateTextViewData(inputFieldText: inputField.text!)
-
+        
         //判斷是否全部猜對
         gameStatusCheck()
-
+        
         //重置A B 計數
         aNumber = 0
         bNumber = 0
+        
+        inputField.text = ""
         
         
         
@@ -166,6 +167,8 @@ class DispleyViewController: UIViewController {
         //重新產生答案
         answerNumber = []
         getAnswerNumber()
+        
+        inputField.text = ""
         
         print(arrayNumber)
         print(answerNumber)
